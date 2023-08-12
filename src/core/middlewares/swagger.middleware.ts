@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
 import httpStatus from 'http-status';
 import swaggerUi from 'swagger-ui-express';
-
 import AppError from '@core/utils/appError';
 import logger from '@core/utils/logger';
 import consts from '@config/consts';

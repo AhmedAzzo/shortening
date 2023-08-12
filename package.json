@@ -6,6 +6,7 @@
   "scripts": {
     "build": "tsc && tsc-alias",
     "server:prod": "node dist/server.js",
+    "server:dev": "ts-node-dev --exit-child --respawn -r tsconfig-paths/register src/server.ts",
     "lint": "eslint ./src/**/*.ts",
     "lint:fix": "eslint **/*.ts --fix",
     "prettier": "prettier --check \"{*.js,!(node*)**/*.ts}\"",

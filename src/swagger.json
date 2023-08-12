@@ -2,11 +2,11 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "Node Express Template -> (NET.ts) ",
-        "description": "Node.js NET.ts RESTful API",
+        "title": "FINN - Shortining APP",
+        "description": "API Documents For Shortining URL service.",
         "license": {
             "name": "MIT",
-            "url": "https://opensource.org/licenses/MIT"
+            "url": ""
         }
     },
     "basePath": "/",
@@ -21,12 +21,13 @@
         "application/json"
     ],
     "paths": {
-        "/api/health": {
+        "/": {
             "get": {
                 "tags": [
                     "healthcheck"
                 ],
-                "summary": "Application service health check 💗",
+                "summary": "Application service health check.",
+                "description": "This api returns OK if the service is up and running.",
                 "produces": [
                     "application/json"
                 ],
@@ -35,7 +36,81 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "<h2>OK: The application is up and running, <a href='http://localhost:3000/docs'>Go to API Document. </a> </h2>"
+                    }
+                }
+            }
+        },
+        "/shortining/encode": {
+            "post": {
+                "tags": [
+                    "shortining"
+                ],
+                "description": "This api is used to get an original url and return short url.",
+                "parameters": [
+                    {
+                        "name": "Input",
+                        "in": "body",
+                        "description": "Input data required to generate short url.",
+                        "schema": {
+                            "$ref": "#/definitions/EncodeInput"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Short URL has been generated successfully!",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request!",
+                        "error": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "message": {}
+                    }
+                }
+            }
+        },
+        "/shortining/decode": {
+            "post": {
+                "tags": [
+                    "shortining"
+                ],
+                "description": "This api is used to get a short url and return the original url.",
+                "parameters": [
+                    {
+                        "name": "Input",
+                        "in": "body",
+                        "description": "Input data required to generate original url.",
+                        "schema": {
+                            "$ref": "#/definitions/DecodeInput"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Original Url has been generated successfully!",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request!",
+                        "error": {}
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "message": {}
                     }
                 }
             }
@@ -52,6 +127,28 @@
                     "$ref": "#/definitions/InputBody"
                 }
             }
+        },
+        "EncodeInput": {
+            "required": [
+                "originalUrl"
+            ],
+            "properties": {
+                "originalUrl": {
+                    "type": "string",
+                    "default": "www.google.com"
+                }
+            }
+        },
+        "DecodeInput": {
+            "required": [
+                "shortUrl"
+            ],
+            "properties": {
+                "shortUrl": {
+                    "type": "string",
+                    "default": "example"
+                }
+            }
         }
     },
     "ResponseWithMessage": {
@@ -59,6 +156,14 @@
         "properties": {
             "message": {
                 "type": "string"
+            },
+            "data": {
+                "type": "object",
+                "properties": {
+                    "shortUrl": {
+                        "type": "string"
+                    }
+                }
             }
         }
     }

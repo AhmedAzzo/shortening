@@ -3,7 +3,6 @@ import app from '@app';
 import config from '@config/config';
 import logger from '@core/utils/logger';
 import errorHandler from 'core/utils/errorHandler';
-
 const { port } = config;
 
 const server: Server = app.listen(port, (): void => {

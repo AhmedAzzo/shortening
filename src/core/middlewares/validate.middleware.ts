@@ -3,7 +3,7 @@ import httpStatus from 'http-status';
 import { NextFunction, Request, Response } from 'express';
 
 import AppError from '@core/utils/appError';
-import { ValidationSchema } from '@core/interfaces/validationSchema';
+import { ValidationSchema } from '@core/interfaces';
 /*
  * Validate request according to the defined validation Schema (see `validations` directory)
  * The request's body, params or query properties may be checked only.
@@ -34,11 +34,11 @@ const validate =
             const { value, error } = Joi.compile(validSchema)
                 .prefs({ errors: { label: 'key' } })
                 .validate(object);
-
             if (error) {
                 const errorMessage = error.details
                     .map((details) => details.message)
                     .join(', ');
+                console.log('errorMessage', errorMessage);
                 return next(new AppError(httpStatus.BAD_REQUEST, errorMessage));
             }
             Object.assign(req, value);

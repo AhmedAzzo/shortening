@@ -1,0 +1,24 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+const express_1 = tslib_1.__importDefault(require("express"));
+const api_1 = tslib_1.__importDefault(require("./api"));
+const express_http_context_1 = tslib_1.__importDefault(require("express-http-context"));
+const consts_1 = tslib_1.__importDefault(require("./config/consts"));
+const httpLogger_1 = tslib_1.__importDefault(require("./core/utils/httpLogger"));
+const errorHandling_middleware_1 = tslib_1.__importDefault(require("./core/middlewares/errorHandling.middleware"));
+const uniqueReqId_middleware_1 = tslib_1.__importDefault(require("./core/middlewares/uniqueReqId.middleware"));
+const _404_router_1 = tslib_1.__importDefault(require("./components/404/404.router"));
+const swagger_router_1 = tslib_1.__importDefault(require("./components/swagger-ui/swagger.router"));
+const app = (0, express_1.default)();
+app.use(express_http_context_1.default.middleware);
+app.use(httpLogger_1.default.successHandler);
+app.use(httpLogger_1.default.errorHandler);
+app.use(uniqueReqId_middleware_1.default);
+app.use(express_1.default.json());
+app.use(consts_1.default.API_ROOT_PATH, api_1.default);
+app.use(swagger_router_1.default);
+app.use(_404_router_1.default);
+app.use(errorHandling_middleware_1.default);
+exports.default = app;
+//# sourceMappingURL=app.js.map

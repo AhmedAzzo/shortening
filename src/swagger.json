@@ -2,8 +2,8 @@
     "swagger": "2.0",
     "info": {
         "version": "1.0.0",
-        "title": "FINN - Shortining APP",
-        "description": "API Documents For Shortining URL service.",
+        "title": "FINN - Shortening APP",
+        "description": "API Documents For Shortening URL service.",
         "license": {
             "name": "MIT",
             "url": ""
@@ -41,10 +41,10 @@
                 }
             }
         },
-        "/shortining/encode": {
+        "/shortening/encode": {
             "post": {
                 "tags": [
-                    "shortining"
+                    "shortening"
                 ],
                 "description": "This api is used to get an original url and return short url.",
                 "parameters": [
@@ -78,10 +78,10 @@
                 }
             }
         },
-        "/shortining/decode": {
+        "/shortening/decode": {
             "post": {
                 "tags": [
-                    "shortining"
+                    "shortening"
                 ],
                 "description": "This api is used to get a short url and return the original url.",
                 "parameters": [

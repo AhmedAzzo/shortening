@@ -7,7 +7,7 @@ import {
 import encodeUrlValidation from './validators/encodeUrl.validation';
 import decodeUrlValidation from './validators/decodeUrl.validation';
 const router: Router = Router();
-const prefix = 'shortining';
+const prefix = 'shortening';
 router.post(
     `/${prefix}/encode`,
     [validation(encodeUrlValidation)],

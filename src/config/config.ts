@@ -12,7 +12,7 @@ require('dotenv').config();
 const envsSchema = Joi.object()
     .keys({
         NODE_ENV: Joi.string()
-            .valid('production', 'development')
+            .valid('production', 'development', "test") // I added test value to be used in jest tests only
             .required().default('development'),
         PORT: Joi.number().default(3000),
     })

@@ -146,7 +146,7 @@
             "properties": {
                 "shortUrl": {
                     "type": "string",
-                    "default": "example"
+                    "default": "https://short.com/3f"
                 }
             }
         }

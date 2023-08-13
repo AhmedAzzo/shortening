@@ -6,7 +6,7 @@ services:
       dockerfile: Dev.Dockerfile
     command: 'npm run server:dev'
     ports:
-      - '8080:8080'
-    env_file: .env.local
+      - '3000:3000'
+    env_file: .env
     volumes:
       - './src:/app/src'

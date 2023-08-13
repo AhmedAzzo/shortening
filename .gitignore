@@ -20,9 +20,6 @@ typings/
 # Dist #
 dist/
 
-# TEST #
-coverage/
-
 # IDE #
 .idea/
 *.swp

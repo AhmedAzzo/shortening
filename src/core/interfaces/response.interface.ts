@@ -1,8 +1,7 @@
-
 export interface IResponse {
-    message: string;
-    data: {
-        shortUrl?: string;
-        originalUrl?: string;
-    }
+  message: string;
+  data: {
+    shortUrl?: string;
+    originalUrl?: string;
+  };
 }

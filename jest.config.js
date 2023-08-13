@@ -3,17 +3,17 @@ const { compilerOptions } = require('./tsconfig.json');
 require('dotenv').config({ path: '.env' });
 
 module.exports = {
-    moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-        prefix: '<rootDir>/src',
-    }),
-    testEnvironment: 'node',
-    transform: {
-        '^.+\\.tsx?$': 'ts-jest',
-    },
-    testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
-    testPathIgnorePatterns: ['/lib/', '/node_modules/', '/img/', '/dist/'],
-    moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-    modulePaths: ['src'],
-    moduleDirectories: ['node_modules'],
-    setupFiles: ['dotenv/config'],
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>/src',
+  }),
+  testEnvironment: 'node',
+  transform: {
+    '^.+\\.tsx?$': 'ts-jest',
+  },
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+  testPathIgnorePatterns: ['/lib/', '/node_modules/', '/img/', '/dist/'],
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  modulePaths: ['src'],
+  moduleDirectories: ['node_modules'],
+  setupFiles: ['dotenv/config'],
 };

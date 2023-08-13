@@ -1,15 +1,15 @@
 export interface IEncode {
-    originalUrl: string;
+  originalUrl: string;
 }
 export interface IDecode {
-    shortUrl: string;
+  shortUrl: string;
 }
 
 export interface ShortenedUrls {
-    originalUrl: string;
-    createdAt: number;
+  originalUrl: string;
+  createdAt: number;
 }
 export interface OriginalUrls {
-    shortUrl: string;
-    createdAt: number;
+  shortUrl: string;
+  createdAt: number;
 }

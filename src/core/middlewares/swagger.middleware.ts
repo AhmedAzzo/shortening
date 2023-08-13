@@ -7,19 +7,19 @@ import consts from '@config/consts';
 import swaggerDocument from '../../swagger.json'; // use path and replace it to use new way of swagger docs
 
 const swaggerForbidden = () => {
-    logger.error('Trying to access swagger docs on production');
-    throw new AppError(
-        httpStatus.FORBIDDEN,
-        'API docs are not available on production',
-    );
+  logger.error('Trying to access swagger docs on production');
+  throw new AppError(
+    httpStatus.FORBIDDEN,
+    'API docs are not available on production',
+  );
 };
 
 const swaggerBasePath = (req: Request, res: Response, next: NextFunction) => {
-    const basePath: string = req.originalUrl.replace(consts.API_DOCS_PATH, '');
-    swaggerDocument.basePath = basePath;
-    swaggerUi.setup(swaggerDocument)(req, res, () => {
-        next();
-    });
+  const basePath: string = req.originalUrl.replace(consts.API_DOCS_PATH, '');
+  swaggerDocument.basePath = basePath;
+  swaggerUi.setup(swaggerDocument)(req, res, () => {
+    next();
+  });
 };
 
 export { swaggerBasePath, swaggerForbidden };

@@ -135,7 +135,7 @@
             "properties": {
                 "originalUrl": {
                     "type": "string",
-                    "default": "www.google.com"
+                    "default": "https://www.example.com"
                 }
             }
         },

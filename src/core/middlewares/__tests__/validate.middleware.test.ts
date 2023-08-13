@@ -12,11 +12,12 @@ import { validationMessages } from '@core/messages';
 const validationSchemaWithAllOptions: ValidationSchema = {
     body: Joi.object().keys({
         input: Joi.object().keys({
-            originalUrl: Joi.string().required().min(5)
+            originalUrl: Joi.string().required().min(18).pattern(new RegExp('^(https?://)'))
                 .messages({
                     'string': validationMessages('originalUrl').string,
                     'any.required': validationMessages('originalUrl').required,
                     'string.min': validationMessages('originalUrl').min,
+                    'string.pattern.base': validationMessages('originalUrl').urlPattern,
                 }),
         }),
     }),
@@ -39,7 +40,7 @@ describe('Validate middleware', () => {
             url: '/shortening/encode',
             body: {
                 input: {
-                    originalUrl: 'www.google.com',
+                    originalUrl: "https://www.example.com"
                 },
             },
         });
@@ -52,10 +53,11 @@ describe('Validate middleware', () => {
     });
 
     test.each`
-    body                                | params            | query                  | validationErr
-    ${{ input: {} }}                    | ${skip}           | ${skip}                | ${validationMessages('originalUrl').required}
-    ${{ input: { originalUrl: 123 } }}  | ${skip}           | ${skip}                | ${'"originalUrl" must be a string'}
-    ${{ input: { originalUrl: "123" } }}| ${skip}           | ${skip}                | ${validationMessages('originalUrl').min}
+    body                                                    | params            | query                  | validationErr
+    ${{ input: {} }}                                        | ${skip}           | ${skip}                | ${validationMessages('originalUrl').required}
+    ${{ input: { originalUrl: 123 } }}                      | ${skip}           | ${skip}                | ${'"originalUrl" must be a string'}
+    ${{ input: { originalUrl: "123" } }}                    | ${skip}           | ${skip}                | ${validationMessages('originalUrl').min}
+    ${{ input: { originalUrl: "htt://www.google.com/" } }}  | ${skip}           | ${skip}                | ${validationMessages('originalUrl').urlPattern}
   `(
         'should throw an app error with error message=$validationErr when request body= $body',
         ({ body, params, query, validationErr }) => {

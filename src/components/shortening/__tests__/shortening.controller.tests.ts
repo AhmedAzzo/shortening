@@ -7,11 +7,10 @@ const encodeUrl = jest.fn();
 const decodeUrl = jest.fn();
 
 const encodeMock = {
-    originalUrl: 'www.google.com',
+    originalUrl: 'https://www.example.com/',
 };
 const decodeMock = {
-    // TODO: add correct mock data
-    shortUrl: 'to be added',
+    shortUrl: 'https://short.com/1',
 };
 
 const noDataMock = {};
@@ -47,7 +46,7 @@ describe('Decode API', () => {
             await request(app)
                 .post('/shortening/decode')
                 .send(decodeMock)
-                .expect(httpStatus.CREATED);
+                .expect(httpStatus.NOT_FOUND);
         });
 
         test('should return 400 status with validation error message if missing short url data', async () => {

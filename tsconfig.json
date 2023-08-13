@@ -24,6 +24,7 @@
     "paths": {
       "@app": ["./app.ts"],
       "@core/*": ["core/*"],
+      "@helpers/*": ["helpers/*"],
       "@components/*": ["components/*"],
       "@config/*": ["config/*"]
     },

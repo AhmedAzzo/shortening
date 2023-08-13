@@ -1,5 +1,3 @@
-
-
 import Joi from 'joi';
 import { ValidationSchema } from '@core/interfaces';
 import { validationMessages } from '@core/messages';

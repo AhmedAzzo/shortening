@@ -33,4 +33,5 @@ shortening is a simple URL shortening service where you enter a URL such as http
   - **`/server.ts`**: File has server settings and configurations. 
   - **`/swagger.json`**: File difine the swagger document for our app. 
 
+- All test functionality are in __test__ folders inside modules.
 - other files in main directory, are used for testing, linting and by git, and manage packages like package.json.

@@ -10,7 +10,7 @@ const encodeMock = {
   originalUrl: 'https://www.example.com/',
 };
 const decodeMock = {
-  shortUrl: 'httpshttps://short.com/3f',
+  shortUrl: 'https://short.com/3f',
 };
 
 const noDataMock = {};

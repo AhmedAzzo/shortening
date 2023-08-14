@@ -40,6 +40,7 @@ const encode = async ({ originalUrl }: IEncode): Promise<string> => {
       `System start generating short URL from your long one`,
       originalUrl,
     );
+    originalUrl = originalUrl.replace(/\s/g, '');
     const originalShortenedUrl = originalShortenedUrls.get(originalUrl);
 
     if (originalShortenedUrl?.shortUrl) {
@@ -89,6 +90,7 @@ const decode = async ({ shortUrl }: IDecode): Promise<string> => {
       `System start generating original url from your shortened one`,
       shortUrl,
     );
+    shortUrl = shortUrl.replace(/\s/g, '');
     // get the original url from the map.
     const key = getLastSegmentFromurl(shortUrl);
     logger.info(`Get original Url for the short url: ${shortUrl}`);

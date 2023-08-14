@@ -14,10 +14,13 @@
  * console.log(counterWithInitialValue()); // Output: 12
  */
 
-export const createCounter = (initialValue: number = 0) => {
+import { ICounterFunction } from "./interfaces";
+
+export const createCounter = (initialValue: number = 0): ICounterFunction => {
   let count = initialValue;
   return function () {
     count++;
     return count;
   };
 };
+

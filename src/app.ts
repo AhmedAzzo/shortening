@@ -1,4 +1,5 @@
 import express, { Application } from 'express';
+import cors from "cors";
 
 import api from 'api';
 import httpContext from 'express-http-context';
@@ -11,6 +12,8 @@ import swaggerApiDocs from '@components/swagger-ui/swagger.router';
 
 const app: Application = express();
 
+app.use(cors());
+app.use(express.json());
 app.use(httpContext.middleware);
 app.use(httpLogger.successHandler);
 app.use(httpLogger.errorHandler);

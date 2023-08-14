@@ -9,7 +9,7 @@
  * const key = await keyGenerator(number);
  * // key could be '1Nv'
  */
-export const keyGenerator = async (number) => {
+export const keyGenerator = async (number): Promise<string> => {
   const codes =
     '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const result = [];

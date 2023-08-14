@@ -9,7 +9,7 @@
  * const lastSegment = getLastSegmentFromurl(shortUrl);
  * // lastSegment will be 'dsadas'
  */
-export const getLastSegmentFromurl = (shortUrl) => {
+export const getLastSegmentFromurl = (shortUrl): string => {
   const url = new URL(shortUrl);
   const pathParts = url.pathname.split('/');
   const cleanPathParts = pathParts.filter((part) => part !== '');

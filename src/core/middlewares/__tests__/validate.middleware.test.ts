@@ -15,11 +15,13 @@ const validationSchemaWithAllOptions: ValidationSchema = {
       originalUrl: Joi.string()
         .required()
         .min(18)
-        .pattern(new RegExp('^(https?://)'))
+        .max(2048)
+        .pattern(new RegExp(/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/i))
         .messages({
           string: validationMessages('originalUrl').string,
           'any.required': validationMessages('originalUrl').required,
           'string.min': validationMessages('originalUrl').min,
+          'string.max': validationMessages('originalUrl').max,
           'string.pattern.base': validationMessages('originalUrl').urlPattern,
         }),
     }),
@@ -33,7 +35,7 @@ const validationSchemaWithAllOptions: ValidationSchema = {
 };
 
 const skip = null;
-
+const longUrl = 'https://www.example.com'.repeat(100);
 describe('Validate middleware', () => {
   test('should call next middleware in the stack with no errors if validation passes', () => {
     const next = jest.fn();
@@ -60,6 +62,7 @@ describe('Validate middleware', () => {
     ${{ input: {} }}                                       | ${skip} | ${skip} | ${validationMessages('originalUrl').required}
     ${{ input: { originalUrl: 123 } }}                     | ${skip} | ${skip} | ${'"originalUrl" must be a string'}
     ${{ input: { originalUrl: '123' } }}                   | ${skip} | ${skip} | ${validationMessages('originalUrl').min}
+    ${{ input: { originalUrl: longUrl } }}                   | ${skip} | ${skip} | ${validationMessages('originalUrl').max}
     ${{ input: { originalUrl: 'htt://www.google.com/' } }} | ${skip} | ${skip} | ${validationMessages('originalUrl').urlPattern}
   `(
     'should throw an app error with error message=$validationErr when request body= $body',

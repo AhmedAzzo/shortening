@@ -19,7 +19,8 @@ Inside of this repoistory you will find fully app and ready to use **express** b
 
 ### Additional features:
 
-The `master` branch contains the latest version of the app. However we can do more enhancements to have more scallable application, see them in "".
+The `master` branch contains the latest version of the app.
+However i added more docs about the problem we are solving, the solution we implemented and how we can do more enhancements to have more scallable application, see them in "solution-docs" Folder.
 
 ## Getting started
 

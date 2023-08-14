@@ -8,8 +8,8 @@ import {
   swaggerBasePath,
 } from '@core/middlewares/swagger.middleware';
 
-const router: Router = Router();
 
+const router: Router = Router();
 if (config.env !== 'production') {
   router.use(consts.API_DOCS_PATH, swaggerUi.serve, swaggerBasePath);
 } else {

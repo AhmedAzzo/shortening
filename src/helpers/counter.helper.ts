@@ -1,3 +1,4 @@
+import { ICounterFunction } from "./interfaces";
 /**
  * Creates a counter function that increments its value with each call.
  *
@@ -14,7 +15,6 @@
  * console.log(counterWithInitialValue()); // Output: 12
  */
 
-import { ICounterFunction } from "./interfaces";
 
 export const createCounter = (initialValue: number = 0): ICounterFunction => {
   let count = initialValue;

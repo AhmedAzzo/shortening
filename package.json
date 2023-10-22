@@ -42,6 +42,7 @@
     "morgan": "^1.10.0",
     "node-mocks-http": "^1.12.2",
     "path": "^0.12.7",
+    "prom-client": "^14.2.0",
     "runtime-node-refresh": "^1.0.7",
     "supertest": "^6.3.3",
     "swagger-ui-express": "^5.0.0",

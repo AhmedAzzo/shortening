@@ -7,4 +7,6 @@ const router: Router = Router();
 router.use(healthCheckRoutes);
 router.use(shorteningRoutes);
 
+
+
 export default router;
